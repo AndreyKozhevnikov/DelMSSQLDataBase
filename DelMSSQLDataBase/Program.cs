@@ -23,7 +23,7 @@ namespace DelMSSQLDataBase {
                     DeleteDataBase(sqlServer, argumentValue);
                 }
             }
-            Console.ReadKey();
+            //Console.ReadKey();
         }
         static void DeleteDataBase(Server server, string dbName) {
             server.KillDatabase(dbName);
