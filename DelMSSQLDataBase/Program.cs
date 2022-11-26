@@ -6,7 +6,7 @@ using System.Linq;
 namespace DelMSSQLDataBase {
     class Program {
         static void Main(string[] args) {
-            var namesToExcludeFile = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory+"namesToExclude.txt");
+            var namesToExcludeFile = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory+"namesToExclude.txt"); //folder with exe
             var namesToExclude = namesToExcludeFile.Split(';'); 
             var argumentValue = args[0].Substring(1);
             var sqlServer = new Server(@"(localdb)\mssqllocaldb");
@@ -16,7 +16,7 @@ namespace DelMSSQLDataBase {
                 for(int i = count - 1; i >= 0; i--) {
                     var db = sqlServer.Databases[i];
                     var dtDiff = DateTime.Today - db.CreateDate;
-                    if(db.IsSystemObject || dtDiff.TotalDays < 15) {
+                    if(db.IsSystemObject || dtDiff.TotalDays < 8) {
                         continue;
                     }
                     bool flag = false;
