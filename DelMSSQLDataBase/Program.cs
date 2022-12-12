@@ -15,12 +15,13 @@ namespace DelMSSQLDataBase {
                 var count = sqlServer.Databases.Count;
                 for(int i = count - 1; i >= 0; i--) {
                     var db = sqlServer.Databases[i];
+                    var dbname = db.Name.ToLower();
                     var dtDiff = DateTime.Today - db.CreateDate;
-                    if(db.IsSystemObject || dtDiff.TotalDays < 8) {
+                    if((db.IsSystemObject || dtDiff.TotalDays < 8) && !dbname.StartsWith("dxapplication")) {
                         continue;
                     }
                     bool flag = false;
-                    var dbname = db.Name.ToLower();
+                   
                     foreach(var nm in namesToExclude) {
                         var exname = nm.ToLower();
                         if(dbname.Contains(exname)) {

@@ -176,11 +176,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.SqlServer.SqlManagementObjects.140.17218.0\build\net40\Microsoft.SqlServer.SqlManagementObjects.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.SqlManagementObjects.140.17218.0\build\net40\Microsoft.SqlServer.SqlManagementObjects.targets'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>If $(ConfigurationName) == Release (  call $(SolutionDir)\..\..\Deploy\AssemblyInfoDeploy\AssemblyInfo.exe $(SolutionDir)DelMSSQLDataBase\Properties\AssemblyInfo.cs -set:15.1 )
+    <PreBuildEvent>If $(ConfigurationName) == Release (  call $(SolutionDir)\..\..\..\Deploy\AssemblyInfoDeploy\AssemblyInfo.exe $(SolutionDir)DelMSSQLDataBase\Properties\AssemblyInfo.cs -set:15.1 )
 echo release changed</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>If $(ConfigurationName) == Release ( xcopy "$(TargetDir)*.exe" "$(SolutionDir)\..\..\Deploy\DelMSSQLDataBase" /y  /f)
+    <PostBuildEvent>If $(ConfigurationName) == Release ( xcopy "$(TargetDir)*.exe" "$(SolutionDir)\..\..\..\Deploy\DelMSSQLDataBase" /y  /f)
 echo "Release completed"</PostBuildEvent>
   </PropertyGroup>
 </Project>
